@@ -17,7 +17,7 @@ the server is stopped.
 
 ## Running This Image
 
-This image is hosted as `hub.docker.com/memw/echoes-unofficial:latest` or
+This image is hosted as `hub.docker.com/memw/scp_echoes_unofficial_server:latest` or
 alternatively in `ghcr.io/stifskere/scp_echoes_docker_server:latest`
 for you to pull with your docker client.
 
