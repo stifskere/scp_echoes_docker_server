@@ -21,20 +21,53 @@ This image is hosted as `hub.docker.com/memw/echoes-unofficial:latest` or
 alternatively in `ghcr.io/stifskere/scp_echoes_docker_server:latest`
 for you to pull with your docker client.
 
-This image downloads the game from steam and runs the provided dedicated server
-within.
+**This image downloads the game from steam and runs the provided dedicated server
+within.**
 
-Since this game is relatively small it doesn't really support making a volume to
-cache the game download, you can still attempt but it's most probable you get
-permission errors or something along these lines.
+An example docker compose file for this image would be the following
+```yml
+services:
+  dedicated-server:
+    container_name: scp_echoes_dedicated_server
+    image: memw/scp_echoes_unofficial_server:latest
+    ports:
+      - "27015:27015" # The port depends on the configuration, this is the default one.
+    stdin_open: true
+    tty: true # stdout is required for the server to start.
+    environment:
+      STEAM_USER: ${STEAM_USER}
+      STEAM_PASS: ${STEAM_PASS}
+      MIN_PLAYERS: 1
+      # furhter configuration
+```
+
+> [!IMPORTANT]
+> When hosting this you must expose the configured port to the target interface
+> so others can access your server.
+
+This game use the steam cli to download the game, after that it will just
+run the dedicated server and logout from steam.
+
+Currently there is no option to cache the install, because there is a lot
+of permissions overhead, but since the game is very small it's a plausible cost.
+If you manage to do that, you can open a pull request, but it's possible
+that the support for that is dropped when the game relases, or maybe not.
 
 > [!WARNING]
 > This game is in alpha stage, while the image supports unauthenticated download
 > you must own the game, so you will probably encounter an error while attempting
 > to download this game anonymously.
->
-> If you own the game in your account you can provide the `STEAM_USER`
-> and `STEAM_PASS` environment variables and do an authenticated download.
+
+If you own the game in your account you can provide the `STEAM_USER`
+and `STEAM_PASS` environment variables and do an authenticated download.
+
+If you configured steam guard it's probable that the server on startup
+asks for you to allow authentication in the application, this has a relatively
+fast timeout, so just accept the request and let the server start.
+
+It is expected for the server to take about 2 minutes to start, it's in fact
+given that as a healthcheck, if that time runs out the container will
+halt and fail to start.
 
 ## Configuration
 
