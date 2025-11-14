@@ -1,0 +1,16 @@
+
+services:
+  dedicated-server:
+    container_name: scp_echoes_dedicated_server
+    build:
+      dockerfile: dockerfile
+    ports:
+      - "27015:27015"
+#    volumes:
+#      - "./echoes:/home/echoes/.local/share/SCP-Echoes/"
+    stdin_open: true
+    tty: true
+    environment:
+      STEAM_USER: ${STEAM_USER}
+      STEAM_PASS: ${STEAM_PASS}
+      MIN_PLAYERS: 1
