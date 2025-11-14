@@ -33,8 +33,8 @@ permission errors or something along these lines.
 > you must own the game, so you will probably encounter an error while attempting
 > to download this game anonymously.
 >
-> If you own the game in your account you can provide the STEAM_USER
-> and STEAM_PASS environment variables and do an authenticated download.
+> If you own the game in your account you can provide the `STEAM_USER`
+> and `STEAM_PASS` environment variables and do an authenticated download.
 
 ## Configuration
 
