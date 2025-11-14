@@ -20,4 +20,5 @@ fi
 ./load_variables.sh
 
 cd ~/.local/share/Steam/steamapps/common/SCP\ Echoes\ Playtest;
-./ServerTemplate.sh
+exec script -q -c "./ServerTemplate.sh" /dev/null \
+	| tee -a ~/.local/share/SCP-Echoes/logs/container.log
