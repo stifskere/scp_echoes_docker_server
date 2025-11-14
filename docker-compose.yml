@@ -6,8 +6,6 @@ services:
       dockerfile: dockerfile
     ports:
       - "27015:27015"
-#    volumes:
-#      - "./echoes:/home/echoes/.local/share/SCP-Echoes/"
     stdin_open: true
     tty: true
     environment:
