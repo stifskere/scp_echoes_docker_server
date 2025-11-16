@@ -36,5 +36,5 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=20s --retries=20 \
   /home/echoes/.local/share/SCP-Echoes/logs/container.log || exit 1
 
 # Expose and start the server/game
-EXPOSE 27015
+EXPOSE 27015/udp
 ENTRYPOINT [ "./entrypoint.sh" ]

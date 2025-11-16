@@ -8,12 +8,12 @@ if [ -z "$STEAM_USER" ] || [ -z "$STEAM_PASS" ]; then
 	echo "PLEASE, PROVIDE STEAM_USER AND STEAM_PASS VARIABLES.";
 	steamcmd \
 		+login anonymous \
-		+app_update "$ECHOES_APP_ID" -beta latest validate \
+		+app_update "$ECHOES_APP_ID" validate \
 		+quit;
 else
 	steamcmd \
 		+login "$STEAM_USER" "$STEAM_PASS" \
-		+app_update "$ECHOES_APP_ID" -beta latest validate \
+		+app_update "$ECHOES_APP_ID" validate \
 		+quit;
 fi
 

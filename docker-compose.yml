@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: dockerfile
     ports:
-      - "27015:27015"
+      - "27015:27015/udp"
     stdin_open: true
     tty: true
     environment:
